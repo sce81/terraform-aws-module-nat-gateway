@@ -1,25 +1,28 @@
-data "aws_vpc" "selected" {
-  id = var.vpc_id
-}
-data "aws_subnet_ids" "selected" {
-  vpc_id = var.vpc_id
-
-    tags = {
-    Name = "*-public-*"
+data "aws_vpc" "main" {
+  filter {
+    name   = "tag:Name"
+    values = ["${var.vpc_name}-*"]
   }
 }
 
-data "aws_subnet" "selected" {
-  for_each = data.aws_subnet_ids.selected.ids
-  id       = each.value
+data "aws_subnets" "main" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.main.id]
+  }
+
+  filter {
+    name   = "tag:Name"
+    values = ["*-${var.subnet_name}-*"]
+  }
 }
 
 locals {
 
-    subnet_ids  = tolist(data.aws_subnet_ids.selected.ids)
-    
+  subnet_ids = tolist(data.aws_subnets.main.ids)
+
   common_tags = tomap({
-    Terraform   = "true"
+    Terraform = "true"
   })
 
 

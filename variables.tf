@@ -1,4 +1,4 @@
-variable "nat_gateway_count" { default = 3 }
+variable "nat_gateway_count" { default = 1 }
 
 variable "name" {}
 variable "env_name" {}
@@ -11,4 +11,9 @@ variable "common_tags" {
 variable "extra_tags" {
   type    = map(any)
   default = {}
+}
+
+variable "subnet_name" {
+  type    = string
+  default = "public"
 }
