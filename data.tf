@@ -23,6 +23,7 @@ locals {
 
   common_tags = tomap({
     Terraform = "true"
+    VPC       = data.aws_vpc.main.id
   })
 
 
