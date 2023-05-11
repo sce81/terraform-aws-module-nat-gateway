@@ -13,7 +13,7 @@ variable "extra_tags" {
   default = {}
 }
 
-variable "subnet_ids" {
+variable "subnet_name" {
   type    = string
   default = "public"
 }

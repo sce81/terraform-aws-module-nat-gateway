@@ -7,7 +7,7 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
     local.common_tags, var.extra_tags,
     tomap({
-      Name = "${var.vpc_id}-${var.env_name}-natgw${count.index + 1}"
+      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}"
     })
   )
 
@@ -20,7 +20,7 @@ resource "aws_eip" "main" {
   tags = merge(
     local.common_tags, var.extra_tags,
     tomap({
-      Name = "${var.vpc_id}-${var.env_name}-natgw${count.index + 1}-eip"
+      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}-eip"
     })
   )
 } 
