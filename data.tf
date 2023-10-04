@@ -13,7 +13,7 @@ data "aws_subnets" "main" {
 
   filter {
     name   = "tag:Name"
-    values = ["*-${var.subnet_name}-*"]
+    values = ["*-${var.subnet_name}-az*"]
   }
 }
 

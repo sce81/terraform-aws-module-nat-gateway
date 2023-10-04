@@ -15,7 +15,7 @@ resource "aws_nat_gateway" "main" {
 
 resource "aws_eip" "main" {
   count = var.nat_gateway_count
-  vpc   = true
+  domain = "vpc"
 
   tags = merge(
     local.common_tags, var.extra_tags,
