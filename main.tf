@@ -7,7 +7,7 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
     local.common_tags, var.extra_tags,
     tomap({
-      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}-hello-agent"
+      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}"
     })
   )
 
