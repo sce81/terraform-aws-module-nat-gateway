@@ -1,14 +1,14 @@
-data "aws_vpc" "main" {
-  filter {
-    name   = "tag:Name"
-    values = ["${var.name}-${var.env_name}-vpc"]
-  }
-}
+//data "aws_vpc" "main" {
+//  filter {
+//    name   = "tag:Name"
+//    values = ["${var.name}-${var.env_name}-vpc"]
+//  }
+//}
 
 data "aws_subnets" "main" {
   filter {
     name   = "vpc-id"
-    values = [data.aws_vpc.main.id]
+    values = [var.vpc_id]
   }
 
   filter {
