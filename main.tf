@@ -23,5 +23,4 @@ resource "aws_eip" "main" {
       Name = "${var.name}-${var.env_name}-natgw${count.index + 1}-eip"
     })
   )
-    depends_on = [ aws_nat_gateway.main ]
 } 
