@@ -7,7 +7,7 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
     local.common_tags, var.extra_tags,
     tomap({
-      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}"
+      Name = "${var.name}-${var.env_name}-natgw${count.index + 1}-hello-agent"
     })
   )
 
@@ -23,4 +23,5 @@ resource "aws_eip" "main" {
       Name = "${var.name}-${var.env_name}-natgw${count.index + 1}-eip"
     })
   )
+    depends_on = [ aws_nat_gateway.main ]
 } 

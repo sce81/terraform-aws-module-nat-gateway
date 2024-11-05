@@ -16,4 +16,8 @@ variable "extra_tags" {
 variable "subnet_name" {
   type    = string
   default = "public"
+  validation {
+    condition = contains(["public", "Public"], var.subnet_name)
+    error_message = "NAT Gateway must be deployed to a Public Subnet"
+  }
 }
